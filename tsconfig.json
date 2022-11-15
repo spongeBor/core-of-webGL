@@ -2,10 +2,12 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "module": "es6",
+    "types": ["react", "node"],
+    "module": "NodeNext",
     "target": "es5",
     "allowJs": true,
     "jsx": "react"
   },
+  "include": ["src/**/*"],
   "exclude": ["dist", "./webpack.config.js"]
 }

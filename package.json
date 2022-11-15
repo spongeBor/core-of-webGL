@@ -9,7 +9,9 @@
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "commit": "cz",
+    "commit:amend": "git commit --amend --no-edit"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "@webpack-cli/generators": "^2.5.0",
+    "commitizen": "^4.2.5",
     "css-loader": "^6.7.1",
     "eslint": "^8.27.0",
     "html-webpack-plugin": "^5.5.0",
@@ -39,6 +42,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3"
   }
 }

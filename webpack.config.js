@@ -10,7 +10,6 @@ const isProduction = process.env.NODE_ENV == "production";
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
-
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -56,7 +55,11 @@ const config = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
   },
-  stats: 'summary',
+  stats: "summary",
+  cache: false,
+  devServer: {
+    historyApiFallback: true,
+  },
 };
 
 module.exports = () => {
