@@ -13,6 +13,8 @@ import RotatedTriangleMatrix from "./components/RotatedTriangleMatrix";
 import RotatedTriangleMatrix4 from "./components/RotatedTriangleMatrix4";
 import RotatedTranslatedTriangle from "./components/RotatedTranslatedTriangle/index";
 import RotatingTriangles from "./components/RotatingTriangles/index";
+import MultiAttributeSize from "./components/MultiAttributeSize/index";
+import MultiAttributeSizeInterleaved from "./components/MultiAttributeSizeInterleaved/index";
 function App() {
   return (
     <div className="app">
@@ -45,6 +47,14 @@ function App() {
           path="/rotatingTriangles"
           element={<RotatingTriangles />}
         ></Route>
+        <Route
+          path="/multiAttributeSize"
+          element={<MultiAttributeSize />}
+        ></Route>
+        <Route
+          path="/multiAttributeSizeInterleaved"
+          element={<MultiAttributeSizeInterleaved />}
+        ></Route>
       </Routes>
     </div>
   );
@@ -65,6 +75,10 @@ function Main() {
       <Link to="/rotatedTriangleMatrix4">RotatedTriangleMatrix4</Link>
       <Link to="/rotatedTranslatedTriangle">RotatedTranslatedTriangle</Link>
       <Link to="/rotatingTriangles">RotatingTriangles</Link>
+      <Link to="/multiAttributeSize">MultiAttributeSize</Link>
+      <Link to="/multiAttributeSizeInterleaved">
+        MultiAttributeSizeInterleaved
+      </Link>
     </div>
   );
 }
