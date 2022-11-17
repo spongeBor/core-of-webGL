@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { initShaders } from "../../utils/index";
 
-function HelloRectangle() {
+function TranslatedTriangle() {
   const canvasRef = useRef<HTMLCanvasElement>();
   let canvas: HTMLCanvasElement;
   let gl: WebGLRenderingContext & { program?: WebGLProgram };
+  let tx = 0.5,
+    ty = 0.5,
+    tz = 0.0;
   useEffect(() => {
     canvas = canvasRef.current;
     gl = init(canvas);
@@ -13,19 +16,18 @@ function HelloRectangle() {
       console.log("Failed to set the positions of the vertices");
       return;
     }
-    console.log(n);
+    const u_Translation = gl.getUniformLocation(gl.program, "u_Translation");
+    gl.uniform4f(u_Translation, tx, ty, tz, 0.0);
     clearCanvas(gl);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
-    gl.drawArrays(gl.TRIANGLES, 0, 4);
+    gl.drawArrays(gl.TRIANGLES, 0, n);
   }, []);
 
   // 顶点着色器
   const VSHADER_SOURCE = `
   attribute vec4 a_Position;
+  uniform vec4 u_Translation;
   void main() {
-    gl_Position = a_Position;
-    gl_PointSize = 10.0;
+    gl_Position = a_Position + u_Translation;
   }
   `;
   const FSHADER_SOURCE = `
@@ -59,9 +61,7 @@ function HelloRectangle() {
   function initVertexBuffers(
     gl: WebGLRenderingContext & { program?: WebGLProgram }
   ) {
-    const vertices = new Float32Array([
-      -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5,
-    ]);
+    const vertices = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
     const n = 3;
     const vertexBuffer = gl.createBuffer();
     if (!vertexBuffer) {
@@ -81,4 +81,4 @@ function HelloRectangle() {
   );
 }
 
-export default HelloRectangle;
+export default TranslatedTriangle;

@@ -1,10 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { initShaders } from "../../utils/index";
 
-function HelloRectangle() {
+function RotatedTriangle() {
   const canvasRef = useRef<HTMLCanvasElement>();
   let canvas: HTMLCanvasElement;
   let gl: WebGLRenderingContext & { program?: WebGLProgram };
+  const ANGLE = 90.0;
+  const radian = (Math.PI * ANGLE) / 180.0;
+  const cosB = Math.cos(radian);
+  const sinB = Math.sin(radian);
   useEffect(() => {
     canvas = canvasRef.current;
     gl = init(canvas);
@@ -13,21 +17,26 @@ function HelloRectangle() {
       console.log("Failed to set the positions of the vertices");
       return;
     }
-    console.log(n);
+    const u_CosB = gl.getUniformLocation(gl.program, "u_CosB");
+    const u_SinB = gl.getUniformLocation(gl.program, "u_SinB");
+    gl.uniform1f(u_CosB, cosB);
+    gl.uniform1f(u_SinB, sinB);
     clearCanvas(gl);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
-    gl.drawArrays(gl.TRIANGLES, 0, 4);
+    gl.drawArrays(gl.TRIANGLES, 0, n);
   }, []);
 
   // 顶点着色器
   const VSHADER_SOURCE = `
   attribute vec4 a_Position;
+  uniform float u_CosB, u_SinB;
   void main() {
-    gl_Position = a_Position;
-    gl_PointSize = 10.0;
+    gl_Position.x = a_Position.x * u_CosB - a_Position.y * u_SinB;
+    gl_Position.y = a_Position.x * u_SinB + a_Position.y * u_CosB;
+    gl_Position.z = a_Position.z;
+    gl_Position.w = 1.0;
   }
   `;
+
   const FSHADER_SOURCE = `
   precision mediump float;
   void main() {
@@ -59,9 +68,7 @@ function HelloRectangle() {
   function initVertexBuffers(
     gl: WebGLRenderingContext & { program?: WebGLProgram }
   ) {
-    const vertices = new Float32Array([
-      -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5,
-    ]);
+    const vertices = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
     const n = 3;
     const vertexBuffer = gl.createBuffer();
     if (!vertexBuffer) {
@@ -81,4 +88,4 @@ function HelloRectangle() {
   );
 }
 
-export default HelloRectangle;
+export default RotatedTriangle;

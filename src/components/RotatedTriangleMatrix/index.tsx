@@ -1,10 +1,77 @@
 import React, { useEffect, useRef } from "react";
 import { initShaders } from "../../utils/index";
 
-function HelloRectangle() {
+function RotatedTriangleMatrix() {
   const canvasRef = useRef<HTMLCanvasElement>();
   let canvas: HTMLCanvasElement;
   let gl: WebGLRenderingContext & { program?: WebGLProgram };
+  const ANGLE = 90.0;
+  // 旋转
+  const radian = (Math.PI * ANGLE) / 180.0;
+  const cosB = Math.cos(radian);
+  const sinB = Math.sin(radian);
+  const xformMatrix = new Float32Array([
+    cosB,
+    sinB,
+    0.0,
+    0.0,
+    -sinB,
+    cosB,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+  ]);
+  // 平移
+  const tx = 0.5,
+    ty = 0.5,
+    tz = 0.0;
+  const xformMatrix2 = new Float32Array([
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    tx,
+    ty,
+    tz,
+    1.0,
+  ]);
+  // 缩放
+  const sx = 1.0,
+    sy = 1.5,
+    sz = 1.0;
+  const xformMatrix3 = new Float32Array([
+    sx,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    sy,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    sz,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+  ]);
   useEffect(() => {
     canvas = canvasRef.current;
     gl = init(canvas);
@@ -13,21 +80,21 @@ function HelloRectangle() {
       console.log("Failed to set the positions of the vertices");
       return;
     }
-    console.log(n);
+    const u_xformMatrix = gl.getUniformLocation(gl.program, "u_xformMatrix");
+    gl.uniformMatrix4fv(u_xformMatrix, false, xformMatrix3);
     clearCanvas(gl);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
-    gl.drawArrays(gl.TRIANGLES, 0, 4);
+    gl.drawArrays(gl.TRIANGLES, 0, n);
   }, []);
 
   // 顶点着色器
   const VSHADER_SOURCE = `
   attribute vec4 a_Position;
+  uniform mat4 u_xformMatrix;
   void main() {
-    gl_Position = a_Position;
-    gl_PointSize = 10.0;
+    gl_Position = u_xformMatrix * a_Position;
   }
   `;
+
   const FSHADER_SOURCE = `
   precision mediump float;
   void main() {
@@ -59,9 +126,7 @@ function HelloRectangle() {
   function initVertexBuffers(
     gl: WebGLRenderingContext & { program?: WebGLProgram }
   ) {
-    const vertices = new Float32Array([
-      -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5,
-    ]);
+    const vertices = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
     const n = 3;
     const vertexBuffer = gl.createBuffer();
     if (!vertexBuffer) {
@@ -81,4 +146,4 @@ function HelloRectangle() {
   );
 }
 
-export default HelloRectangle;
+export default RotatedTriangleMatrix;
