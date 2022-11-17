@@ -1,15 +1,18 @@
 import React from "react";
-import DrawPoint from "./components/DrawPoint/index";
-import DrawPoint2 from "./components/DrawPoint2/index";
+import DrawPoint from "./components/DrawPoint";
+import DrawPoint2 from "./components/DrawPoint2";
 import { Routes, Route, Link } from "react-router-dom";
 import styles from "./app.module.scss";
-import ClickPoint from "./components/ClickPoint/index";
-import MultPoints from "./components/MultPoints/index";
-import HelloTriangle from "./components/HelloTriangle/index";
-import HelloRectangle from "./components/HelloRectangle/index";
-import TranslatedTriangle from "./components/TranslatedTriangle/index";
-import RotatedTriangle from "./components/RotatedTriangle/index";
-import RotatedTriangleMatrix from "./components/RotatedTriangleMatrix/index";
+import ClickPoint from "./components/ClickPoint";
+import MultPoints from "./components/MultPoints";
+import HelloTriangle from "./components/HelloTriangle";
+import HelloRectangle from "./components/HelloRectangle";
+import TranslatedTriangle from "./components/TranslatedTriangle";
+import RotatedTriangle from "./components/RotatedTriangle";
+import RotatedTriangleMatrix from "./components/RotatedTriangleMatrix";
+import RotatedTriangleMatrix4 from "./components/RotatedTriangleMatrix4";
+import RotatedTranslatedTriangle from "./components/RotatedTranslatedTriangle/index";
+import RotatingTriangles from "./components/RotatingTriangles/index";
 function App() {
   return (
     <div className="app">
@@ -30,6 +33,18 @@ function App() {
           path="/rotatedTriangleMatrix"
           element={<RotatedTriangleMatrix />}
         ></Route>
+        <Route
+          path="/rotatedTriangleMatrix4"
+          element={<RotatedTriangleMatrix4 />}
+        ></Route>
+        <Route
+          path="/rotatedTranslatedTriangle"
+          element={<RotatedTranslatedTriangle />}
+        ></Route>
+        <Route
+          path="/rotatingTriangles"
+          element={<RotatingTriangles />}
+        ></Route>
       </Routes>
     </div>
   );
@@ -47,6 +62,9 @@ function Main() {
       <Link to="/rotatedTriangle">RotatedTriangle</Link>
       <Link to="/rotatedTriangle">RotatedTriangle</Link>
       <Link to="/rotatedTriangleMatrix">RotatedTriangleMatrix</Link>
+      <Link to="/rotatedTriangleMatrix4">RotatedTriangleMatrix4</Link>
+      <Link to="/rotatedTranslatedTriangle">RotatedTranslatedTriangle</Link>
+      <Link to="/rotatingTriangles">RotatingTriangles</Link>
     </div>
   );
 }
