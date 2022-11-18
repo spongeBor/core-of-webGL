@@ -15,6 +15,9 @@ import RotatedTranslatedTriangle from "./components/RotatedTranslatedTriangle/in
 import RotatingTriangles from "./components/RotatingTriangles/index";
 import MultiAttributeSize from "./components/MultiAttributeSize/index";
 import MultiAttributeSizeInterleaved from "./components/MultiAttributeSizeInterleaved/index";
+import MultiAttributeColor from "./components/MultiAttributeColor/index";
+import HelloTriangleFragCoord from "./components/HelloTriangleFragCoord/index";
+import TexturedQuad from "./components/TexturedQuad/index";
 function App() {
   return (
     <div className="app">
@@ -55,6 +58,15 @@ function App() {
           path="/multiAttributeSizeInterleaved"
           element={<MultiAttributeSizeInterleaved />}
         ></Route>
+        <Route
+          path="/multiAttributeColor"
+          element={<MultiAttributeColor />}
+        ></Route>
+        <Route
+          path="/helloTriangleFragCoord"
+          element={<HelloTriangleFragCoord />}
+        ></Route>
+        <Route path="/texturedQuad" element={<TexturedQuad />}></Route>
       </Routes>
     </div>
   );
@@ -79,6 +91,9 @@ function Main() {
       <Link to="/multiAttributeSizeInterleaved">
         MultiAttributeSizeInterleaved
       </Link>
+      <Link to="/multiAttributeColor">MultiAttributeColor</Link>
+      <Link to="/helloTriangleFragCoord">HelloTriangleFragCoord</Link>
+      <Link to="/texturedQuad">TexturedQuad</Link>
     </div>
   );
 }
