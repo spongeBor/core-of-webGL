@@ -18,6 +18,8 @@ import MultiAttributeSizeInterleaved from "./components/MultiAttributeSizeInterl
 import MultiAttributeColor from "./components/MultiAttributeColor/index";
 import HelloTriangleFragCoord from "./components/HelloTriangleFragCoord/index";
 import TexturedQuad from "./components/TexturedQuad/index";
+import TexturedQuadRepeat from "./components/TexturedQuadRepeat/index";
+import MultiTexture from "./components/MultiTexture/index";
 function App() {
   return (
     <div className="app">
@@ -67,6 +69,11 @@ function App() {
           element={<HelloTriangleFragCoord />}
         ></Route>
         <Route path="/texturedQuad" element={<TexturedQuad />}></Route>
+        <Route
+          path="/texturedQuadRepeat"
+          element={<TexturedQuadRepeat />}
+        ></Route>
+        <Route path="/multiTexture" element={<MultiTexture />}></Route>
       </Routes>
     </div>
   );
@@ -94,6 +101,8 @@ function Main() {
       <Link to="/multiAttributeColor">MultiAttributeColor</Link>
       <Link to="/helloTriangleFragCoord">HelloTriangleFragCoord</Link>
       <Link to="/texturedQuad">TexturedQuad</Link>
+      <Link to="/texturedQuadRepeat">TexturedQuadRepeat</Link>
+      <Link to="/multiTexture">MultiTexture</Link>
     </div>
   );
 }

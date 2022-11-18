@@ -23,3 +23,4 @@ declare module "*.module.styl" {
   export default classes;
 }
 declare module "*.jpg";
+declare module "*.gif";
