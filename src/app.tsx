@@ -21,6 +21,7 @@ import TexturedQuad from "./components/TexturedQuad/index";
 import TexturedQuadRepeat from "./components/TexturedQuadRepeat/index";
 import MultiTexture from "./components/MultiTexture/index";
 import LookAtTriangles from "./components/LookAtTriangles/index";
+import LookAtRotatedTriangles from "./components/LookAtRotatedTriangles/index";
 function App() {
   return (
     <div className="app">
@@ -76,6 +77,10 @@ function App() {
         ></Route>
         <Route path="/multiTexture" element={<MultiTexture />}></Route>
         <Route path="/lootAtTriangles" element={<LookAtTriangles />}></Route>
+        <Route
+          path="/lookAtRotatedTriangles"
+          element={<LookAtRotatedTriangles />}
+        ></Route>
       </Routes>
     </div>
   );
@@ -106,6 +111,7 @@ function Main() {
       <Link to="/texturedQuadRepeat">TexturedQuadRepeat</Link>
       <Link to="/multiTexture">MultiTexture</Link>
       <Link to="/lootAtTriangles">LootAtTriangles</Link>
+      <Link to="/LookAtRotatedTriangles">LookAtRotatedTriangles</Link>
     </div>
   );
 }

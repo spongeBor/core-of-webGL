@@ -1,7 +1,7 @@
 import { Mat4 } from "cuon-matrix-ts";
 import React, { useEffect, useRef } from "react";
 import { initShaders } from "../../utils/index";
-function LookAtTriangles() {
+function LookAtRotatedTriangles() {
   const canvasRef = useRef<HTMLCanvasElement>();
   let canvas: HTMLCanvasElement;
   let gl: WebGLRenderingContext & { program?: WebGLProgram };
@@ -23,10 +23,13 @@ function LookAtTriangles() {
   const VSHADER_SOURCE = `
   attribute vec4 a_Position;
   attribute vec4 a_Color;
-  uniform mat4 u_ViewMatrix;
+  // uniform mat4 u_ViewMatrix;
+  // uniform mat4 u_ModelMatrix;
+  uniform mat4 u_ModelViewMatrix;
   varying vec4 v_Color;
   void main() {
-    gl_Position = u_ViewMatrix * a_Position;
+    // gl_Position = u_ViewMatrix * u_ModelMatrix * a_Position;
+    gl_Position = u_ModelViewMatrix * a_Position;
     v_Color = a_Color;
   }
   `;
@@ -135,15 +138,48 @@ function LookAtTriangles() {
     gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, FSIZE * 6, FSIZE * 3);
     gl.enableVertexAttribArray(a_Color);
 
-    const u_ViewMatrix = gl.getUniformLocation(gl.program, "u_ViewMatrix");
-    if (!u_ViewMatrix) {
-      console.log("Failed to get the storage locations of u_ViewMatrix");
+    // 方法1
+    // const u_ViewMatrix = gl.getUniformLocation(gl.program, "u_ViewMatrix");
+    // if (!u_ViewMatrix) {
+    //   console.log("Failed to get the storage locations of u_ViewMatrix");
+    //   return;
+    // }
+    // const viewMatrix = new Mat4();
+    // viewMatrix.setLookAt(0.2, 0.25, 0.25, 0, 0, 0, 0, 1, 0);
+    // gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix.elements);
+
+    // const u_ModelMatrix = gl.getUniformLocation(gl.program, "u_ModelMatrix");
+    // if (!u_ModelMatrix) {
+    //   console.log("Failed to get the storage locations of u_ModelMatrix");
+    //   return;
+    // }
+    // const modelMatrix = new Mat4();
+    // modelMatrix.setRotate(-10, 0, 0, 1);
+    // gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements);
+
+    const u_ModelViewMatrix = gl.getUniformLocation(
+      gl.program,
+      "u_ModelViewMatrix"
+    );
+    if (!u_ModelViewMatrix) {
+      console.log("Failed to get the storage locations of u_ModelViewMatrix");
       return;
     }
-    const viewMatrix = new Mat4();
-    viewMatrix.setLookAt(0.2, 0.25, 0.25, 0, 0, 0, 0, 1, 0);
-    gl.uniformMatrix4fv(u_ViewMatrix, false, viewMatrix.elements);
+    // 方法2
+    // const viewMatrix = new Mat4();
+    // const modelMatrix = new Mat4();
+    // viewMatrix.setLookAt(0.2, 0.25, 0.25, 0, 0, 0, 0, 1, 0);
+    // modelMatrix.setRotate(-10, 0, 0, 1);
+    // const modelViewMatrix = viewMatrix.multiply(modelMatrix);
+    // gl.uniformMatrix4fv(u_ModelViewMatrix, false, modelViewMatrix.elements);
 
+    // 方法3
+    const modelViewMatrix = new Mat4();
+    modelViewMatrix
+      .setRotate(-10, 0, 0, 1)
+      .setLookAt(0.2, 0.25, 0.25, 0, 0, 0, 0, 1, 0);
+
+    gl.uniformMatrix4fv(u_ModelViewMatrix, false, modelViewMatrix.elements);
     return n;
   }
 
@@ -152,4 +188,4 @@ function LookAtTriangles() {
   );
 }
 
-export default LookAtTriangles;
+export default LookAtRotatedTriangles;
