@@ -20,6 +20,7 @@ import HelloTriangleFragCoord from "./components/HelloTriangleFragCoord/index";
 import TexturedQuad from "./components/TexturedQuad/index";
 import TexturedQuadRepeat from "./components/TexturedQuadRepeat/index";
 import MultiTexture from "./components/MultiTexture/index";
+import LookAtTriangles from "./components/LookAtTriangles/index";
 function App() {
   return (
     <div className="app">
@@ -74,6 +75,7 @@ function App() {
           element={<TexturedQuadRepeat />}
         ></Route>
         <Route path="/multiTexture" element={<MultiTexture />}></Route>
+        <Route path="/lootAtTriangles" element={<LookAtTriangles />}></Route>
       </Routes>
     </div>
   );
@@ -103,6 +105,7 @@ function Main() {
       <Link to="/texturedQuad">TexturedQuad</Link>
       <Link to="/texturedQuadRepeat">TexturedQuadRepeat</Link>
       <Link to="/multiTexture">MultiTexture</Link>
+      <Link to="/lootAtTriangles">LootAtTriangles</Link>
     </div>
   );
 }
