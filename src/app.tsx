@@ -11,17 +11,18 @@ import TranslatedTriangle from "./components/TranslatedTriangle";
 import RotatedTriangle from "./components/RotatedTriangle";
 import RotatedTriangleMatrix from "./components/RotatedTriangleMatrix";
 import RotatedTriangleMatrix4 from "./components/RotatedTriangleMatrix4";
-import RotatedTranslatedTriangle from "./components/RotatedTranslatedTriangle/index";
-import RotatingTriangles from "./components/RotatingTriangles/index";
-import MultiAttributeSize from "./components/MultiAttributeSize/index";
-import MultiAttributeSizeInterleaved from "./components/MultiAttributeSizeInterleaved/index";
-import MultiAttributeColor from "./components/MultiAttributeColor/index";
-import HelloTriangleFragCoord from "./components/HelloTriangleFragCoord/index";
-import TexturedQuad from "./components/TexturedQuad/index";
-import TexturedQuadRepeat from "./components/TexturedQuadRepeat/index";
-import MultiTexture from "./components/MultiTexture/index";
-import LookAtTriangles from "./components/LookAtTriangles/index";
-import LookAtRotatedTriangles from "./components/LookAtRotatedTriangles/index";
+import RotatedTranslatedTriangle from "./components/RotatedTranslatedTriangle";
+import RotatingTriangles from "./components/RotatingTriangles";
+import MultiAttributeSize from "./components/MultiAttributeSize";
+import MultiAttributeSizeInterleaved from "./components/MultiAttributeSizeInterleaved";
+import MultiAttributeColor from "./components/MultiAttributeColor";
+import HelloTriangleFragCoord from "./components/HelloTriangleFragCoord";
+import TexturedQuad from "./components/TexturedQuad";
+import TexturedQuadRepeat from "./components/TexturedQuadRepeat";
+import MultiTexture from "./components/MultiTexture";
+import LookAtTriangles from "./components/LookAtTriangles";
+import LookAtRotatedTriangles from "./components/LookAtRotatedTriangles";
+import LookAtTrianglesWithKeys from "./components/LookAtTrianglesWithKeys";
 function App() {
   return (
     <div className="app">
@@ -81,6 +82,10 @@ function App() {
           path="/lookAtRotatedTriangles"
           element={<LookAtRotatedTriangles />}
         ></Route>
+        <Route
+          path="/lookAtTrianglesWithKeys"
+          element={<LookAtTrianglesWithKeys />}
+        ></Route>
       </Routes>
     </div>
   );
@@ -111,7 +116,8 @@ function Main() {
       <Link to="/texturedQuadRepeat">TexturedQuadRepeat</Link>
       <Link to="/multiTexture">MultiTexture</Link>
       <Link to="/lootAtTriangles">LootAtTriangles</Link>
-      <Link to="/LookAtRotatedTriangles">LookAtRotatedTriangles</Link>
+      <Link to="/lookAtRotatedTriangles">LookAtRotatedTriangles</Link>
+      <Link to="/lookAtTrianglesWithKeys">LookAtTrianglesWithKeys</Link>
     </div>
   );
 }
