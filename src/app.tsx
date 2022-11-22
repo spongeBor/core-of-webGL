@@ -24,6 +24,9 @@ import LookAtTriangles from "./components/LookAtTriangles";
 import LookAtRotatedTriangles from "./components/LookAtRotatedTriangles";
 import LookAtTrianglesWithKeys from "./components/LookAtTrianglesWithKeys";
 import OrthoView from "./components/OrthoView/index";
+import LookAtTrianglesWithKeysViewVolume from "./components/LookAtTrianglesWithKeysViewVolume/index";
+import OrthoViewHalfSize from "./components/OrthoViewHalfSize/index";
+import OrthoViewHalfWidth from "./components/OrthoViewHalfWidth/index";
 function App() {
   return (
     <div className="app">
@@ -88,6 +91,18 @@ function App() {
           element={<LookAtTrianglesWithKeys />}
         ></Route>
         <Route path="/orthoView" element={<OrthoView />}></Route>
+        <Route
+          path="/lookAtTrianglesWithKeysViewVolume"
+          element={<LookAtTrianglesWithKeysViewVolume />}
+        ></Route>
+        <Route
+          path="/orthoViewHalfSize"
+          element={<OrthoViewHalfSize />}
+        ></Route>
+        <Route
+          path="/orthoViewHalfWidth"
+          element={<OrthoViewHalfWidth />}
+        ></Route>
       </Routes>
     </div>
   );
@@ -121,6 +136,11 @@ function Main() {
       <Link to="/lookAtRotatedTriangles">LookAtRotatedTriangles</Link>
       <Link to="/lookAtTrianglesWithKeys">LookAtTrianglesWithKeys</Link>
       <Link to="/orthoView">OrthoView</Link>
+      <Link to="/lookAtTrianglesWithKeysViewVolume">
+        LookAtTrianglesWithKeysViewVolume
+      </Link>
+      <Link to="/orthoViewHalfSize">OrthoViewHalfSize</Link>
+      <Link to="/orthoViewHalfWidth">OrthoViewHalfWidth</Link>
     </div>
   );
 }
