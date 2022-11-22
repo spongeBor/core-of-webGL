@@ -33,6 +33,8 @@ import PerspectiveViewMvpMatrix from "./components/PerspectiveViewMvpMatrix/inde
 import DepthBuffer from "./components/DepthBuffer/index";
 import ZFighting from "./components/ZFighting/index";
 import HelloCube from "./components/HelloCube/index";
+import ColoredCube from "./components/ColoredCube/index";
+import ColoredCubeSingleColor from "./components/ColoredCubeSingleColor/index";
 function App() {
   return (
     <div className="app">
@@ -121,6 +123,8 @@ function App() {
         <Route path="/depthBuffer" element={<DepthBuffer />}></Route>
         <Route path="/zFighting" element={<ZFighting />}></Route>
         <Route path="/helloCube" element={<HelloCube />}></Route>
+        <Route path="/coloredCube" element={<ColoredCube />}></Route>
+        <Route path="/coloredCubeSingleColor" element={<ColoredCubeSingleColor />}></Route>
       </Routes>
     </div>
   );
@@ -165,6 +169,8 @@ function Main() {
       <Link to="/depthBuffer">DepthBuffer</Link>
       <Link to="/zFighting">ZFighting</Link>
       <Link to="/helloCube">HelloCube</Link>
+      <Link to="/coloredCube">ColoredCube</Link>
+      <Link to="/coloredCubeSingleColor">ColoredCubeSingleColor</Link>
     </div>
   );
 }
