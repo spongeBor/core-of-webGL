@@ -30,6 +30,9 @@ import OrthoViewHalfWidth from "./components/OrthoViewHalfWidth/index";
 import PerspectiveView from "./components/PerspectiveView/index";
 import PerspectiveViewMvp from "./components/PerspectiveViewMvp/index";
 import PerspectiveViewMvpMatrix from "./components/PerspectiveViewMvpMatrix/index";
+import DepthBuffer from "./components/DepthBuffer/index";
+import ZFighting from "./components/ZFighting/index";
+import HelloCube from "./components/HelloCube/index";
 function App() {
   return (
     <div className="app">
@@ -115,6 +118,9 @@ function App() {
           path="/perspectiveViewMvpMatrix"
           element={<PerspectiveViewMvpMatrix />}
         ></Route>
+        <Route path="/depthBuffer" element={<DepthBuffer />}></Route>
+        <Route path="/zFighting" element={<ZFighting />}></Route>
+        <Route path="/helloCube" element={<HelloCube />}></Route>
       </Routes>
     </div>
   );
@@ -156,6 +162,9 @@ function Main() {
       <Link to="/perspectiveView">PerspectiveView</Link>
       <Link to="/perspectiveViewMvp">PerspectiveViewMvp</Link>
       <Link to="/perspectiveViewMvpMatrix">PerspectiveViewMvpMatrix</Link>
+      <Link to="/depthBuffer">DepthBuffer</Link>
+      <Link to="/zFighting">ZFighting</Link>
+      <Link to="/helloCube">HelloCube</Link>
     </div>
   );
 }
