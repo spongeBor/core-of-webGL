@@ -27,6 +27,9 @@ import OrthoView from "./components/OrthoView/index";
 import LookAtTrianglesWithKeysViewVolume from "./components/LookAtTrianglesWithKeysViewVolume/index";
 import OrthoViewHalfSize from "./components/OrthoViewHalfSize/index";
 import OrthoViewHalfWidth from "./components/OrthoViewHalfWidth/index";
+import PerspectiveView from "./components/PerspectiveView/index";
+import PerspectiveViewMvp from "./components/PerspectiveViewMvp/index";
+import PerspectiveViewMvpMatrix from "./components/PerspectiveViewMvpMatrix/index";
 function App() {
   return (
     <div className="app">
@@ -103,6 +106,15 @@ function App() {
           path="/orthoViewHalfWidth"
           element={<OrthoViewHalfWidth />}
         ></Route>
+        <Route path="/perspectiveView" element={<PerspectiveView />}></Route>
+        <Route
+          path="/perspectiveViewMvp"
+          element={<PerspectiveViewMvp />}
+        ></Route>
+        <Route
+          path="/perspectiveViewMvpMatrix"
+          element={<PerspectiveViewMvpMatrix />}
+        ></Route>
       </Routes>
     </div>
   );
@@ -141,6 +153,9 @@ function Main() {
       </Link>
       <Link to="/orthoViewHalfSize">OrthoViewHalfSize</Link>
       <Link to="/orthoViewHalfWidth">OrthoViewHalfWidth</Link>
+      <Link to="/perspectiveView">PerspectiveView</Link>
+      <Link to="/perspectiveViewMvp">PerspectiveViewMvp</Link>
+      <Link to="/perspectiveViewMvpMatrix">PerspectiveViewMvpMatrix</Link>
     </div>
   );
 }
