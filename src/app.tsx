@@ -23,6 +23,7 @@ import MultiTexture from "./components/MultiTexture";
 import LookAtTriangles from "./components/LookAtTriangles";
 import LookAtRotatedTriangles from "./components/LookAtRotatedTriangles";
 import LookAtTrianglesWithKeys from "./components/LookAtTrianglesWithKeys";
+import OrthoView from "./components/OrthoView/index";
 function App() {
   return (
     <div className="app">
@@ -86,6 +87,7 @@ function App() {
           path="/lookAtTrianglesWithKeys"
           element={<LookAtTrianglesWithKeys />}
         ></Route>
+        <Route path="/orthoView" element={<OrthoView />}></Route>
       </Routes>
     </div>
   );
@@ -118,6 +120,7 @@ function Main() {
       <Link to="/lootAtTriangles">LootAtTriangles</Link>
       <Link to="/lookAtRotatedTriangles">LookAtRotatedTriangles</Link>
       <Link to="/lookAtTrianglesWithKeys">LookAtTrianglesWithKeys</Link>
+      <Link to="/orthoView">OrthoView</Link>
     </div>
   );
 }
