@@ -11,66 +11,30 @@ function RotatedTriangleMatrix() {
   const cosB = Math.cos(radian);
   const sinB = Math.sin(radian);
   const xformMatrix = new Float32Array([
-    cosB,
-    sinB,
-    0.0,
-    0.0,
-    -sinB,
-    cosB,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
+    cosB, sinB, 0.0, 0.0,
+    -sinB, cosB, 0.0, 0.0,
+    0.0, 0.0, 1.0, 0.0,
+    0.0, 0.0, 0.0, 1.0,
   ]);
   // 平移
   const tx = 0.5,
     ty = 0.5,
     tz = 0.0;
   const xformMatrix2 = new Float32Array([
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    tx,
-    ty,
-    tz,
-    1.0,
+    1.0, 0.0, 0.0, 0.0,
+    0.0, 1.0, 0.0, 0.0,
+    0.0, 0.0, 1.0, 0.0,
+    tx, ty, tz, 1.0,
   ]);
   // 缩放
   const sx = 1.0,
     sy = 1.5,
     sz = 1.0;
   const xformMatrix3 = new Float32Array([
-    sx,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    sy,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    sz,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
+    sx, 0.0, 0.0, 0.0,
+    0.0, sy, 0.0, 0.0,
+    0.0, 0.0, sz, 0.0,
+    0.0, 0.0, 0.0, 1.0,
   ]);
   useEffect(() => {
     canvas = canvasRef.current;

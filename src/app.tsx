@@ -36,6 +36,9 @@ import HelloCube from "./components/HelloCube/index";
 import ColoredCube from "./components/ColoredCube/index";
 import ColoredCubeSingleColor from "./components/ColoredCubeSingleColor/index";
 import LightedCube from "./components/LightedCube/index";
+import LightedCubeAmbient from "./components/LightedCubeAmbient/index";
+import LightedTranslatedRotatedCube from "./components/LightedTranslatedRotatedCube/index";
+import PointLightedCube from "./components/PointLightedCube/index";
 function App() {
   return (
     <div className="app">
@@ -127,6 +130,9 @@ function App() {
         <Route path="/coloredCube" element={<ColoredCube />}></Route>
         <Route path="/coloredCubeSingleColor" element={<ColoredCubeSingleColor />}></Route>
         <Route path="/lightedCube" element={<LightedCube />}></Route>
+        <Route path="/lightedCubeAmbient" element={<LightedCubeAmbient />}></Route>
+        <Route path="/lightedTranslatedRotatedCube" element={<LightedTranslatedRotatedCube />}></Route>
+        <Route path="/pointLightedCube" element={<PointLightedCube />}></Route>
       </Routes>
     </div>
   );
@@ -141,7 +147,6 @@ function Main() {
       <Link to="/helloTriangle">HelloTriangle</Link>
       <Link to="/helloRectangle">HelloRectangle</Link>
       <Link to="/translatedTriangle">TranslatedTriangle</Link>
-      <Link to="/rotatedTriangle">RotatedTriangle</Link>
       <Link to="/rotatedTriangle">RotatedTriangle</Link>
       <Link to="/rotatedTriangleMatrix">RotatedTriangleMatrix</Link>
       <Link to="/rotatedTriangleMatrix4">RotatedTriangleMatrix4</Link>
@@ -174,6 +179,9 @@ function Main() {
       <Link to="/coloredCube">ColoredCube</Link>
       <Link to="/coloredCubeSingleColor">ColoredCubeSingleColor</Link>
       <Link to="/lightedCube">LightedCube</Link>
+      <Link to="/lightedCubeAmbient">LightedCubeAmbient</Link>
+      <Link to="/lightedTranslatedRotatedCube">LightedTranslatedRotatedCube</Link>
+      <Link to="/pointLightedCube">PointLightedCube</Link>
     </div>
   );
 }
