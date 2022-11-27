@@ -39,6 +39,8 @@ import LightedCube from "./components/LightedCube/index";
 import LightedCubeAmbient from "./components/LightedCubeAmbient/index";
 import LightedTranslatedRotatedCube from "./components/LightedTranslatedRotatedCube/index";
 import PointLightedCube from "./components/PointLightedCube/index";
+import JointModel from "./components/JointModel/index";
+import MultiJointModel from "./components/MultiJointModel/index";
 function App() {
   return (
     <div className="app">
@@ -133,6 +135,8 @@ function App() {
         <Route path="/lightedCubeAmbient" element={<LightedCubeAmbient />}></Route>
         <Route path="/lightedTranslatedRotatedCube" element={<LightedTranslatedRotatedCube />}></Route>
         <Route path="/pointLightedCube" element={<PointLightedCube />}></Route>
+        <Route path="/jointModel" element={<JointModel />}></Route>
+        <Route path="/multiJointModel" element={<MultiJointModel />}></Route>
       </Routes>
     </div>
   );
@@ -182,6 +186,8 @@ function Main() {
       <Link to="/lightedCubeAmbient">LightedCubeAmbient</Link>
       <Link to="/lightedTranslatedRotatedCube">LightedTranslatedRotatedCube</Link>
       <Link to="/pointLightedCube">PointLightedCube</Link>
+      <Link to="/jointModel">JointModel</Link>
+      <Link to="/multiJointModel">MultiJointModel</Link>
     </div>
   );
 }
