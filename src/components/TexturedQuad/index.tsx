@@ -56,8 +56,10 @@ function TexturedQuad() {
     gl: WebGLRenderingContext & { program?: WebGLProgram }
   ) {
     const verticesTexCoords = new Float32Array([
-      -0.5, 0.5, 0.0, 1.0, -0.5, -0.5, 0.0, 0.0, 0.5, 0.5, 1.0, 1.0, 0.5, -0.5,
-      1.0, 0.0,
+      -0.5, 0.5, 0.0, 1.0,
+      -0.5, -0.5, 0.0, 0.0,
+      0.5, 0.5, 1.0, 1.0,
+      0.5, -0.5, 1.0, 0.0,
     ]);
     const n = 4;
     const FSIZE = verticesTexCoords.BYTES_PER_ELEMENT;

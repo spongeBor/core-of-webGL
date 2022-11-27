@@ -63,62 +63,17 @@ function LookAtRotatedTriangles() {
   ) {
     const verticesColors = new Float32Array([
       // Vertex coordinates and color(RGBA)
-      0.0,
-      0.5,
-      -0.4,
-      0.4,
-      1.0,
-      0.4, // The back green one
-      -0.5,
-      -0.5,
-      -0.4,
-      0.4,
-      1.0,
-      0.4,
-      0.5,
-      -0.5,
-      -0.4,
-      1.0,
-      0.4,
-      0.4,
+      0.0, 0.5, -0.4, 0.4, 1.0, 0.4, // The back green one
+      -0.5, -0.5, -0.4, 0.4, 1.0, 0.4,
+      0.5, -0.5, -0.4, 1.0, 0.4, 0.4,
 
-      0.5,
-      0.4,
-      -0.2,
-      1.0,
-      0.4,
-      0.4, // The middle yellow one
-      -0.5,
-      0.4,
-      -0.2,
-      1.0,
-      1.0,
-      0.4,
-      0.0,
-      -0.6,
-      -0.2,
-      1.0,
-      1.0,
-      0.4,
+      0.5, 0.4, -0.2, 1.0, 0.4, 0.4, // The middle yellow one
+      -0.5, 0.4, -0.2, 1.0, 1.0, 0.4,
+      0.0, -0.6, -0.2, 1.0, 1.0, 0.4,
 
-      0.0,
-      0.5,
-      0.0,
-      0.4,
-      0.4,
-      1.0, // The front blue one
-      -0.5,
-      -0.5,
-      0.0,
-      0.4,
-      0.4,
-      1.0,
-      0.5,
-      -0.5,
-      0.0,
-      1.0,
-      0.4,
-      0.4,
+      0.0, 0.5, 0.0, 0.4, 0.4, 1.0, // The front blue one
+      -0.5, -0.5, 0.0, 0.4, 0.4, 1.0,
+      0.5, -0.5, 0.0, 1.0, 0.4, 0.4,
     ]);
     const n = 9;
     const vertexColorBuffer = gl.createBuffer();
@@ -169,15 +124,14 @@ function LookAtRotatedTriangles() {
     // const viewMatrix = new Mat4();
     // const modelMatrix = new Mat4();
     // viewMatrix.setLookAt(0.2, 0.25, 0.25, 0, 0, 0, 0, 1, 0);
-    // modelMatrix.setRotate(-10, 0, 0, 1);
+    // modelMatrix.setRotate(-80, 0, 0, 1);
     // const modelViewMatrix = viewMatrix.multiply(modelMatrix);
     // gl.uniformMatrix4fv(u_ModelViewMatrix, false, modelViewMatrix.elements);
 
     // 方法3
     const modelViewMatrix = new Mat4();
     modelViewMatrix
-      .setRotate(-10, 0, 0, 1)
-      .setLookAt(0.2, 0.25, 0.25, 0, 0, 0, 0, 1, 0);
+      .setLookAt(0.2, 0.25, 0.25, 0, 0, 0, 0, 1, 0).rotate(-10, 0, 0, 1)
 
     gl.uniformMatrix4fv(u_ModelViewMatrix, false, modelViewMatrix.elements);
     return n;
